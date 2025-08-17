@@ -62,5 +62,5 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'haml'
-gem 'securerandom'
+gem "haml"
+gem "securerandom"
