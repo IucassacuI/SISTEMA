@@ -1,0 +1,23 @@
+%h2= "Perfil de #{@user.name}"
+
+.user
+  %table
+    %tr
+      %td Data de iniciação
+      %td
+        %i= @user.created_at.strftime('%d/%m/%Y')
+    %tr
+      %td Tipo
+      - if @user.admin
+        %td
+          %i Administrador
+      - else
+        %td
+          %i Normal
+
+
+  %h3 Descrição
+  %pre= @user.description
+
+  - if current_user == @user
+    = link_to 'Editar perfil', edit_user_path(@user)

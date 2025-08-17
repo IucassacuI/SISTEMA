@@ -1,0 +1,52 @@
+.title {
+		width: 60%;
+		margin-left: 10px;
+}
+
+.title > h1 {
+		margin-bottom: 0px;
+}
+
+nav {
+		position: absolute;
+		left: 60vw;
+		bottom: 87vh;
+}
+
+.welcome > p {
+		margin-bottom: 0px;
+}
+
+h2, h3 {
+		text-align: center;
+}
+
+.msg {
+		margin-left: 10px;
+}
+
+.msg > p {
+		width: 50%;
+		display: inline;
+}
+
+.msg > i, .msg > a {
+		float: right;
+		margin-right: 10px;
+}
+
+.input {
+		margin-top: 20px;
+}
+
+.form {
+		margin-left: 5px;
+}
+
+a {
+		text-decoration: none;
+}
+
+.announcement {
+		margin-bottom: 10px;
+}

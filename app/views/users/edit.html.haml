@@ -1,0 +1,23 @@
+%h2 Editar perfil
+
+= render 'errors', errors: @errors
+
+.form
+  = form_with model: @user do |form|
+    %div
+      = form.label 'Usuário'
+      = form.text_field :name
+    %div
+      = form.label 'E-mail'
+      = form.text_field :email_address
+    %div
+      = form.label 'Senha'
+      = form.password_field :password, placeholder: '(Opcional)'
+    %div
+      = form.label 'Confirmação da senha'
+      = form.password_field :password_confirmation, placeholder: '(Opcional)'
+    %div
+      = form.label 'Descrição'
+      = form.text_area :description, size: '100x5'
+
+    = form.submit 'Atualizar'

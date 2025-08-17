@@ -1,0 +1,5 @@
+= "#{current_user.name}:"
+
+= form_with model: @msg do |form|
+	= form.text_field :text
+	= form.submit 'Salvar'

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "[SISTEMA]" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+		<div class="title">
+			<h1>[SISTEMA]</h1>
+
+			<% if authenticated? %>
+				<div class="welcome">
+					<% if request.path == '/users/#{current_user.id}' %>
+						<p><i>Bem-vindo(a), <%= current_user.name %>.</i></p>
+					<% else %>
+						<p><i>Bem-vindo(a), <%= link_to current_user.name, current_user %>.</i></p>
+					<% end %>
+					<p><i>Seu código de convite é <%= current_user.invite_code %>.</i></p>
+				</div>
+			<% end %>
+		</div>
+
+		<nav>
+			<ul>
+				<% if authenticated? %>
+					<li><%= link_to 'Anúncios', announcements_path %>
+					<li><%= link_to 'Chat', '/chat' %>
+					<% if current_user.admin %>
+						<li><%= link_to 'Novo anúncio', new_announcement_path %>
+					<% end %>
+					<li><%= link_to 'Sair', session_path, data: {turbo_method: :delete} %>
+				<% end %>
+			</ul>
+		</nav>
+
+		<hr>
+
+    <%= yield %>
+  </body>
+</html>

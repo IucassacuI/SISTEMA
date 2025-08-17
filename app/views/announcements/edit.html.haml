@@ -1,0 +1,9 @@
+= render 'errors', errors: @errors
+
+.form
+	= form_with model: @announcement do |form|
+		%div
+			= form.label :text
+			= form.text_field :text, size: 50
+
+		= form.submit "Salvar"
